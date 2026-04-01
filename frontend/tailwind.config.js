@@ -1,29 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        dark: {
-          900: "#0a0e27",
-          800: "#16213e",
-          700: "#1f3a5f",
-        },
-        gold: "#d4af37",
-        neon: {
-          cyan: "#00ffff",
-          purple: "#ff006e",
+        brand: {
+          black: "#000000",
+          rich: "#050505",    // Base surface
+          red: "#ff0000",     // Primary
+          orange: "#ff8c00",  // Secondary
+          yellow: "#ffdb00",  // Tertiary
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        // Enforcing Sans-Serif globally
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
     },
   },
   plugins: [],
-  darkMode: "class",
 }
