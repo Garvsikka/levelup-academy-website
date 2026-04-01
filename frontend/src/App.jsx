@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
-import ExitIntentPopup from "./components/ExitIntentPopup"
 
 import Home from "./pages/Home"
 import Courses from "./pages/Courses"
@@ -35,7 +34,6 @@ export default function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <ExitIntentPopup />
       <Footer />
     </Router>
   )
