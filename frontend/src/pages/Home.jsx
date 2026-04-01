@@ -1,104 +1,113 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  // 1. POPUP PERSISTENCE: Only shows if 'levelUpPopupDismissed' is not in localStorage
+  useEffect(() => {
+    const isDismissed = localStorage.getItem('levelUpPopupDismissed');
+    if (!isDismissed) {
+      const timer = setTimeout(() => setShowPopup(true), 3000); 
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closePopup = () => {
+    setShowPopup(false);
+    localStorage.setItem('levelUpPopupDismissed', 'true');
+  };
+
   return (
-    <div className="bg-black text-white font-sans selection:bg-brand-red">
+    <div className="bg-black text-white font-sans selection:bg-brand-red selection:text-white">
       
-      {/* 1. HERO SECTION - Level Up Branding */}
+      {/* 2. PERSISTENT POPUP OVERLAY */}
+      {showPopup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6 bg-black/90 backdrop-blur-md">
+          <div className="volcanic-card max-w-lg w-full relative border-brand-red/50 shadow-[0_0_50px_rgba(255,0,0,0.3)] animate-in zoom-in duration-300">
+            <button onClick={closePopup} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-all text-xl">✕</button>
+            <div className="text-brand-red font-black mb-2 tracking-[0.3em] uppercase text-[10px]">Enrollment Open: 2026-27</div>
+            <h2 className="text-4xl font-black mb-4 uppercase italic leading-tight">Master Your <br/><span className="heading-accent text-5xl">Future.</span></h2>
+            <p className="text-gray-400 mb-8 text-sm leading-relaxed">Join the most intensive commerce mentorship program led by Vaibhav Khukhreja. Secure your 95+ Boards and CUET goals.</p>
+            <button className="volcanic-btn w-full" onClick={closePopup}>Secure My Seat Now</button>
+          </div>
+        </div>
+      )}
+
+      {/* 3. HERO SECTION */}
       <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div>
+        <div className="animate-in fade-in slide-in-from-left duration-700">
           <div className="inline-block border-l-4 border-brand-red px-4 py-1 mb-6 bg-white/5">
-            <span className="text-brand-orange font-bold text-sm tracking-widest uppercase">Level Up Your Ambition</span>
+            <span className="text-brand-orange font-bold text-xs tracking-widest uppercase">Level Up Academy</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-none mb-8">
-            Define Your <br/> 
-            <span className="heading-accent text-7xl md:text-8xl">Legacy.</span>
+          <h1 className="text-7xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+            Build Your <br/> 
+            <span className="heading-accent">Legacy.</span>
           </h1>
-          <div className="flex gap-4 mb-8 text-xs font-bold text-gray-400 uppercase tracking-widest">
-            <span className="flex items-center gap-2 text-brand-red">● XI & XII Boards</span>
-            <span>|</span>
-            <span>Professional Courses</span>
-            <span>|</span>
-            <span>CUET Prep</span>
-          </div>
-          <p className="text-gray-400 text-lg mb-10 max-w-md">Experience the premier commerce coaching led by Vaibhav Khukhreja. We don't just teach; we mentor future industry leaders through conceptual rigor.</p>
-          <div className="flex gap-4">
-            <button className="volcanic-btn">Book a Strategy Session</button>
-            <button className="px-8 py-4 border border-white/20 rounded-xl font-bold hover:bg-brand-red/10 transition-all">View Prospectus</button>
-          </div>
+          <p className="text-gray-400 text-lg mb-10 max-w-md">Experience professional commerce mentorship for Class XI, XII & CUET. Led by Vaibhav Khukhreja.</p>
+          <button className="volcanic-btn">Start Your Journey</button>
         </div>
-        <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-brand-red to-brand-orange rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-          <div className="relative aspect-[4/5] bg-[#111] rounded-3xl border border-white/10 flex items-center justify-center text-gray-700 font-black uppercase overflow-hidden">
-             [Image: Vaibhav Khukhreja]
-          </div>
+        <div className="relative aspect-[4/5] bg-neutral-900 rounded-[2.5rem] border border-white/5 flex items-center justify-center text-gray-800 font-black uppercase tracking-widest overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 z-10"></div>
+          <span className="z-20 text-[10px] opacity-40 group-hover:opacity-100 transition-opacity">Vaibhav Khukhreja</span>
+          {/* Replace with <img src="/vaibhav.jpg" className="absolute inset-0 object-cover" /> later */}
         </div>
       </section>
 
-      {/* 2. ACADEMY STATS - From Prospectus */}
-      <div className="border-y border-white/5 bg-[#050505] py-12">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div><h2 className="text-4xl font-black text-white">95+</h2><p className="text-brand-red uppercase text-[10px] font-bold tracking-[0.2em] mt-2">Board Scores</p></div>
-          <div><h2 className="text-4xl font-black text-white">500+</h2><p className="text-brand-red uppercase text-[10px] font-bold tracking-[0.2em] mt-2">Professional Selections</p></div>
-          <div><h2 className="text-4xl font-black text-white">1:1</h2><p className="text-brand-red uppercase text-[10px] font-bold tracking-[0.2em] mt-2">Mentorship Ratio</p></div>
-          <div><h2 className="text-4xl font-black text-white">100%</h2><p className="text-brand-red uppercase text-[10px] font-bold tracking-[0.2em] mt-2">Conceptual Clarity</p></div>
-        </div>
-      </div>
-
-      {/* 3. FACULTY LEADERSHIP */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <h2 className="text-5xl font-black text-center mb-16 uppercase tracking-tighter">Academic <span className="heading-accent">Leadership</span></h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Main Mentor: Vaibhav Khukhreja */}
-          <div className="volcanic-card">
-            <div className="aspect-square bg-gray-900 rounded-2xl mb-8 overflow-hidden flex items-center justify-center text-gray-800 font-black uppercase tracking-[0.5em]">
-              [Profile Photo]
-            </div>
-            <h3 className="text-3xl font-black mb-1 italic">Vaibhav Khukhreja</h3>
-            <p className="text-brand-orange text-xs font-bold uppercase mb-4 tracking-widest">Lead Mentor & Founder</p>
-            <p className="text-gray-400 mb-6 text-sm leading-relaxed">Dedicated to revolutionizing commerce education by bridging the gap between theoretical textbooks and practical application.</p>
-            <ul className="space-y-3 text-gray-300 text-sm font-medium">
-              <li className="flex items-center gap-3"> <span className="text-brand-red">■</span> Expert in Advanced Accountancy & Finance</li>
-              <li className="flex items-center gap-3"> <span className="text-brand-red">■</span> Mentored 1000+ Students for Board Excellence</li>
-            </ul>
-          </div>
-
-          {/* FACULTY TEMPLATE - For Future Mentors */}
-          <div className="volcanic-card border-dashed border-white/10 opacity-80">
-            <div className="aspect-square bg-gray-900/50 rounded-2xl mb-8 border border-white/5 flex items-center justify-center text-gray-800">
-               <span className="text-xs font-bold uppercase tracking-widest">Mentor Image Slot</span>
-            </div>
-            <h3 className="text-3xl font-black mb-1 text-gray-500 italic">[Faculty Name]</h3>
-            <p className="text-gray-600 text-[10px] font-bold uppercase mb-4 tracking-widest italic">Subject Expert</p>
-            <div className="h-20 w-full bg-white/5 rounded-lg mb-6 border border-white/5 flex items-center justify-center italic text-gray-600 text-xs">
-              Brief faculty bio and teaching philosophy goes here...
-            </div>
-            <div className="space-y-2">
-              <div className="h-2 w-3/4 bg-white/5 rounded"></div>
-              <div className="h-2 w-1/2 bg-white/5 rounded"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. LEVEL UP METHODOLOGY - Rebranded Steps */}
-      <section className="py-24 bg-[#050505]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-black mb-16 uppercase tracking-tighter">The <span className="heading-accent">Level Up</span> Way</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* 4. SYMMETRICAL PROGRAMS GRID */}
+      <section className="py-32 px-6 bg-[#050505]">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-black text-center mb-20 uppercase tracking-tighter">Academic <span className="heading-accent">Programs</span></h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { t: 'Concept First', d: 'No Rote Learning' },
-              { t: 'Rigorous Testing', d: 'Weekly Evaluation' },
-              { t: 'Doubt Clearance', d: 'Instant Resolution' },
-              { t: 'Performance Tracking', d: 'Data-Driven Insights' }
-            ].map((step, i) => (
-              <div key={i} className="volcanic-card p-10 hover:bg-brand-red/5">
-                <p className="text-brand-red font-black text-4xl mb-4">0{i+1}</p>
-                <h4 className="font-black text-sm uppercase mb-2">{step.t}</h4>
-                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{step.d}</p>
+              { 
+                title: "Foundation XI", 
+                desc: "The critical year for core fundamentals. We cover Accountancy, Economics, and B.St with absolute conceptual depth. No shortcuts, just pure mastery.",
+                tag: "CORE"
+              },
+              { 
+                title: "Board Mastery XII", 
+                desc: "High-intensity board prep with targeted mock tests, past paper marathons, and specialized answer-writing drills to hit that 95+ score.",
+                tag: "95+ GOAL"
+              },
+              { 
+                title: "Pro-Commerce + CUET", 
+                desc: "The ultimate pathway to SRCC and top-tier Hindu/Hansraj colleges. Includes integrated coaching for both Boards and CUET entrance exams.",
+                tag: "ELITE BATCH"
+              }
+            ].map((course, i) => (
+              <div key={i} className="volcanic-card flex flex-col h-full border-white/5 hover:border-brand-red/30 transition-all duration-500 group">
+                <div className="mb-6">
+                  <span className="text-[9px] font-black tracking-widest text-brand-red uppercase bg-brand-red/10 px-3 py-1.5 rounded-md border border-brand-red/20">
+                    {course.tag}
+                  </span>
+                </div>
+                
+                <h4 className="text-2xl font-black mb-4 uppercase italic tracking-tight group-hover:text-brand-orange transition-colors">
+                  {course.title}
+                </h4>
+                
+                {/* flex-grow here ensures the button always hits the bottom of the card */}
+                <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow">
+                  {course.desc}
+                </p>
+                
+                <button className="w-full py-4 rounded-xl font-black bg-white/5 hover:bg-brand-red text-white transition-all uppercase text-[10px] tracking-widest border border-white/10 hover:border-transparent">
+                  View Syllabus
+                </button>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 5. ACADEMY STATS SECTION */}
+      <section className="py-20 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div><h3 className="text-5xl font-black text-white">95%</h3><p className="text-brand-red text-[10px] font-bold uppercase tracking-widest mt-2">Avg. Board Score</p></div>
+          <div><h3 className="text-5xl font-black text-white">1000+</h3><p className="text-brand-red text-[10px] font-bold uppercase tracking-widest mt-2">Students Mentored</p></div>
+          <div><h3 className="text-5xl font-black text-white">SRCC</h3><p className="text-brand-red text-[10px] font-bold uppercase tracking-widest mt-2">Top Placement</p></div>
+          <div><h3 className="text-5xl font-black text-white">1:1</h3><p className="text-brand-red text-[10px] font-bold uppercase tracking-widest mt-2">Doubt Support</p></div>
         </div>
       </section>
 
