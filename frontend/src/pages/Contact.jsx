@@ -1,189 +1,31 @@
-import React, { useState } from "react"
-import { Helmet } from "react-helmet-async"
-import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import React from "react"
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    class: "",
-    subject: "",
-    message: "",
-  })
-
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const response = await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setSubmitted(true)
-        setFormData({ name: "", email: "", phone: "", class: "", subject: "", message: "" })
-        setTimeout(() => setSubmitted(false), 3000)
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error)
-    }
-  }
-
   return (
-    <>
-      <Helmet>
-        <title>Contact Us - LevelUp Academy | Book Free Workshop</title>
-        <meta
-          name="description"
-          content="Get in touch with LevelUp Academy. Book a free workshop, schedule a demo class, or ask any questions about our maths coaching programs."
-        />
-        <link rel="canonical" href="https://www.levelupacademy.com/contact" />
-      </Helmet>
-
-      <main className="min-h-screen bg-dark-900 pt-32 pb-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="cinematic-text text-5xl md:text-6xl mb-4">
-              Get in <span className="gold-accent">Touch</span>
-            </h1>
-            <p className="text-xl text-gray-400">
-              Have questions? We'd love to hear from you. Reach out anytime!
-            </p>
-          </motion.div>
-
-          {/* Contact Info */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              { icon: <Phone size={32} />, title: "Phone", content: "+91-XXXX-XXXX-XX" },
-              { icon: <Mail size={32} />, title: "Email", content: "hello@levelupacademy.com" },
-              { icon: <MapPin size={32} />, title: "Location", content: "Rohini & Pitampura, Delhi" },
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="card-glow rounded-xl p-8 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <div className="text-gold mb-4 flex justify-center">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-400">{item.content}</p>
-              </motion.div>
-            ))}
+    <main className="min-h-screen bg-black text-white pt-32 pb-20 px-6">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+        <div>
+          <h1 className="text-8xl font-black uppercase italic leading-[0.8] mb-12">SEND A <br/><span className="text-brand-orange text-9xl">SIGNAL.</span></h1>
+          <div className="space-y-10 border-l border-brand-red/20 pl-8">
+            <div><p className="text-brand-yellow font-black uppercase text-[10px] tracking-widest mb-2">Location</p><p className="text-2xl font-bold">Rohini / Pitampura, Delhi</p></div>
+            <div><p className="text-brand-red font-black uppercase text-[10px] tracking-widest mb-2">Direct Email</p><p className="text-2xl font-bold">vaibhav@levelup.com</p></div>
           </div>
-
-          {/* Enquiry Form */}
-          <motion.div
-            className="card-glow rounded-xl p-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="bg-dark-700/50 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="bg-dark-700/50 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold"
-                />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Your Phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="bg-dark-700/50 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold"
-                />
-                <select
-                  name="class"
-                  value={formData.class}
-                  onChange={handleChange}
-                  required
-                  className="bg-dark-700/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold"
-                >
-                  <option value="">Select Your Class</option>
-                  <option value="8">Class 8</option>
-                  <option value="9">Class 9</option>
-                  <option value="10">Class 10</option>
-                  <option value="11">Class 11</option>
-                  <option value="12">Class 12</option>
-                </select>
-              </div>
-
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject of Inquiry"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="w-full bg-dark-700/50 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold"
-              />
-
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows="5"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full bg-dark-700/50 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold"
-              ></textarea>
-
-              <motion.button
-                type="submit"
-                className="w-full px-6 py-3 bg-gradient-to-r from-gold to-neon-cyan text-dark-900 rounded-lg font-bold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-gold/50"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Send size={20} /> Send Message
-              </motion.button>
-
-              {submitted && (
-                <motion.div
-                  className="p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-400"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                >
-                  ✓ Message sent successfully! We'll get back to you soon.
-                </motion.div>
-              )}
-            </form>
-          </motion.div>
         </div>
-      </main>
-    </>
+        <div className="bg-dark-card p-10 rounded-[3rem] border border-white/5 shadow-2xl">
+          <form className="space-y-6">
+            <input placeholder="NAME" className="w-full bg-black border border-white/10 p-5 rounded-2xl focus:border-brand-red outline-none transition-all placeholder:text-gray-700 font-bold" />
+            <select className="w-full bg-black border border-white/10 p-5 rounded-2xl focus:border-brand-orange outline-none transition-all text-gray-500 font-bold appearance-none">
+              <option>SELECT CATEGORY</option>
+              <option>CLASS XI</option>
+              <option>CLASS XII</option>
+              <option>CUET 2026</option>
+            </select>
+            <button className="w-full py-5 bg-brand-red hover:bg-brand-orange text-white font-black uppercase rounded-2xl shadow-[0_10px_40px_rgba(255,0,0,0.3)] transition-all active:scale-95">
+              Initiate Contact
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
   )
 }

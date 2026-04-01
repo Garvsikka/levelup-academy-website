@@ -6,15 +6,16 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Vaibhav Kukreja - LevelUp Academy Founder</title>
-        <meta
-          name="description"
-          content="Meet Vaibhav Kukreja, ISB alumni and founder of LevelUp Academy. Global Hackathon winner and ex-EY consultant transforming maths education."
-        />
-        <link rel="canonical" href="https://www.levelupacademy.com/about" />
+        <title>About Vaibhav Khukhreja - LevelUp Academy</title>
       </Helmet>
 
-      <main className="min-h-screen bg-dark-900 pt-32 pb-20">
+      <main className="min-h-screen bg-black pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-6 mb-20 text-center">
+           <h1 className="text-7xl md:text-9xl font-black uppercase italic tracking-tighter">
+             THE <span className="text-transparent bg-clip-text bg-lava-gradient">ARCHITECT.</span>
+           </h1>
+           <div className="h-2 w-24 bg-brand-red mx-auto mt-4"></div>
+        </div>
         <AboutFounder />
       </main>
     </>
