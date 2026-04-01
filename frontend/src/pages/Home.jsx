@@ -21,7 +21,7 @@ export default function Home() {
         <link rel="canonical" href="https://www.levelupacademy.com/" />
       </Helmet>
 
-      <main className="min-h-screen bg-dark-900 pt-20">
+      <main className="min-h-screen bg-dark-900">
         <HeroSection />
         <CinematicTeaching />
         <PhilosophyGrid />

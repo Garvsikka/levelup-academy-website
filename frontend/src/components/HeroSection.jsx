@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen hero-gradient pt-32 pb-20 px-6 md:px-12 overflow-hidden">
+    <section className="relative min-h-screen hero-gradient pt-24 pb-20 px-6 md:px-12 overflow-hidden">
       <motion.div
         className="absolute top-10 right-10 w-72 h-72 bg-neon-cyan/10 rounded-full blur-3xl"
         animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
