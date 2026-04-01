@@ -1,21 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        brand: {
-          black: "#000000",
-          rich: "#050505",    // Base surface
-          red: "#ff0000",     // Primary
-          orange: "#ff8c00",  // Secondary
-          yellow: "#ffdb00",  // Tertiary
-        },
+        // The Black Base
+        'black': '#000000', 
+        'dark-card': '#0a0a0a',
+        // The Volcanic Palette
+        'brand-red': '#FF0000',
+        'brand-orange': '#FF6A00',
+        'brand-yellow': '#FFCC00',
       },
-      fontFamily: {
-        // Enforcing Sans-Serif globally
-        sans: ["Inter", "system-ui", "sans-serif"],
-      },
+      backgroundImage: {
+        'lava-gradient': 'linear-gradient(to right, #FF0000, #FF6A00, #FFCC00)',
+      }
     },
   },
   plugins: [],
