@@ -1,93 +1,132 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Star, BookOpen, Globe, Quote, MapPin, Target } from 'lucide-react';
+// 1. Mandatory Import: Recharts components
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
-export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
+// Define the exact data from image_0.png
+const cityData = [
+  { name: 'Delhi', value: 60 },
+  { name: 'Mumbai', value: 7 },
+  { name: 'Bangalore', value: 7 },
+  { name: 'Gurgaon', value: 5 },
+  { name: 'Noida', value: 6 },
+  { name: 'Chennai', value: 4 },
+  { name: 'Other Cities', value: 7 }
+];
 
-  useEffect(() => {
-    // 1. THE GUARD: Prevents the popup from ever appearing again if dismissed
-    if (localStorage.getItem('popup_seen_v1')) return;
+// Define a fresh, dynamic color palette for each segment
+const COLORS = ['#FF0000', '#FF4D4D', '#FF7F7F', '#FFB2B2', '#FFE5E5', '#FDD7D7', '#D1C4E9'];
 
-    const timer = setTimeout(() => setShowPopup(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+// Function to render the stylized Stat Cards
+const StatCard = ({ icon: Icon, flex, label, sublabel }) => (
+  <div className="flex flex-col items-center p-8 text-center border-r border-gray-100 last:border-0 hover:bg-red-50/30 transition-colors">
+    <div className="bg-red-100 p-4 rounded-2xl mb-4">
+      <Icon style={{ color: '#FF0000' }} className="w-10 h-10" />
+    </div>
+    <h2 className="text-5xl font-black text-gray-950 leading-none tracking-tighter">{flex}</h2>
+    <p className="text-gray-900 font-black uppercase tracking-widest text-sm mt-3">{label}</p>
+    <p className="text-gray-600 font-medium text-sm mt-1 max-w-[200px]">{sublabel}</p>
+  </div>
+);
 
-  const killPopupPermanently = () => {
-    setShowPopup(false);
-    localStorage.setItem('popup_seen_v1', 'true');
-  };
-
+const Home = () => {
   return (
-    <div className="bg-black text-white font-sans selection:bg-brand-yellow selection:text-black">
+    <div className="bg-white min-h-screen font-sans">
       
-      {/* PERSISTENT VOLCANIC POPUP */}
-      {showPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6 bg-black/90 backdrop-blur-md">
-          <div className="bg-[#0a0a0a] border-2 border-brand-red/50 p-8 rounded-[2rem] max-w-lg w-full relative shadow-[0_0_50px_rgba(255,0,0,0.3)]">
-            <button onClick={killPopupPermanently} className="absolute top-4 right-4 text-gray-500 hover:text-brand-yellow transition-all text-xl">✕</button>
-            <div className="text-brand-yellow font-black mb-2 tracking-[0.3em] uppercase text-[10px]">Enrollment 2026-27</div>
-            <h2 className="text-4xl font-black mb-4 uppercase italic leading-tight">Master Your <br/><span className="text-transparent bg-clip-text bg-lava-gradient text-5xl">Future.</span></h2>
-            <p className="text-gray-400 mb-8 text-sm leading-relaxed">Join the intensive commerce mentorship program by <span className="text-white font-bold">Vaibhav Khukhreja</span>.</p>
-            <button className="w-full py-5 bg-brand-red hover:bg-brand-orange text-white font-black uppercase transition-all rounded-xl shadow-lg" onClick={killPopupPermanently}>
-              Secure My Strategy Session
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* HERO SECTION */}
-      <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <div className="inline-block border-l-4 border-brand-yellow px-4 py-1 mb-6 bg-brand-yellow/5">
-            <span className="text-brand-yellow font-bold text-xs tracking-widest uppercase">Level Up Academy</span>
-          </div>
-          <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8">
-            OWN YOUR <br/> 
-            <span className="text-transparent bg-clip-text bg-lava-gradient">LEGACY.</span>
+      {/* 1. HERO SECTION */}
+      <section className="relative py-28 px-6 text-center bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-6xl md:text-9xl font-black text-gray-950 tracking-tighter leading-[0.9] mb-8">
+            MATHS MASTERS OF <br />
+            <span style={{ color: '#FF0000' }}>ROHINI & PITAMPURA</span>
           </h1>
-          <p className="text-gray-400 text-lg mb-10 max-w-md border-l border-brand-orange/30 pl-6">
-            Premier commerce mentorship for Class XI, XII & CUET. Led by <span className="text-brand-orange italic font-bold text-white">Vaibhav Khukhreja</span>.
+          <p className="text-2xl text-gray-700 font-bold max-w-3xl mx-auto mb-12">
+            7,000+ Students Enrolled for CTS in 25-26. <br /> 
+            Join the movement that's 100x-ing family wealth through academic mastery.
           </p>
-          <button className="px-10 py-4 bg-brand-red hover:bg-brand-orange text-white font-black rounded-xl transition-all shadow-[0_10px_30px_rgba(255,0,0,0.2)] uppercase tracking-widest text-xs">
-            Start Now
+          <button style={{ backgroundColor: '#FF0000' }} className="text-white px-16 py-6 rounded-2xl text-2xl font-black shadow-2xl hover:scale-105 active:scale-95 transition-all">
+            BOOK A DEMO CLASS
           </button>
         </div>
-        <div className="relative p-[2px] bg-gradient-to-tr from-brand-red via-brand-orange to-brand-yellow rounded-[2.5rem]">
-           <div className="bg-black aspect-[4/5] rounded-[2.5rem] flex items-center justify-center text-brand-orange font-black uppercase text-[10px] tracking-widest">
-             [Vaibhav Photo]
-           </div>
+      </section>
+
+      {/* 2. POWER STATS RIBBON */}
+      <section className="bg-white py-16 border-y-2 border-gray-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0">
+          <StatCard icon={Star} flex="7000+" label="CTS ENROLLED" sublabel="Online & Offline aspirants for Chanakya Test Series 25-26" />
+          <StatCard icon={BookOpen} flex="1 LAKH+" label="GLOBAL USERS" sublabel="Students using LEVELUP Study Material globally today" />
+          <StatCard icon={Globe} flex="10 MILLION+" label="STUDENTS IMPACTED" sublabel="Total student interactions in 25-26. Touch wood." />
         </div>
       </section>
 
-      {/* SYMMETRICAL COLOR-CODED PROGRAMS GRID */}
-      <section className="py-24 px-6 bg-[#050505]">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-black text-center mb-20 uppercase tracking-tighter italic">
-            Academic <span className="text-brand-red underline decoration-brand-yellow decoration-4 underline-offset-8">Programs</span>
-          </h2>
+      {/* 3. GEOGRAPHIC REACH (Dynamic, Animated Chart - Shifting image_0.png data to life) */}
+      <section className="py-24 px-6 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto flex flex-col xl:flex-row items-center gap-16">
           
-          <div className="grid md:grid-cols-3 gap-8 text-left">
-            {[
-              { title: "Foundation XI", color: "text-brand-red", border: "border-brand-red/20", tag: "The Start" },
-              { title: "Board Mastery XII", color: "text-brand-orange", border: "border-brand-orange/20", tag: "The Heat" },
-              { title: "Pro-Commerce + CUET", color: "text-brand-yellow", border: "border-brand-yellow/20", tag: "The Gold" }
-            ].map((course, i) => (
-              <div key={i} className={`bg-[#0a0a0a] p-8 rounded-[2rem] flex flex-col h-full border ${course.border} hover:border-brand-yellow/50 transition-all duration-500`}>
-                <span className={`text-[10px] font-black tracking-widest uppercase mb-6 ${course.color}`}>
-                  {course.tag}
-                </span>
-                <h4 className="text-3xl font-black mb-4 uppercase italic tracking-tighter">{course.title}</h4>
-                <p className="text-gray-500 text-sm mb-10 flex-grow leading-relaxed">
-                  Deep-dive conceptual coaching to ensure 100% clarity and a path toward 95+ board scores.
-                </p>
-                <button className="w-full py-4 rounded-xl font-black bg-white/5 hover:bg-white hover:text-black transition-all uppercase text-[10px] tracking-widest border border-white/10">
-                  View Syllabus
-                </button>
-              </div>
-            ))}
+          {/* A. The "Sick Animation" Donut Chart (image_0.png Data) */}
+          <div className="relative w-full h-[500px] xl:w-2/3 shrink-0 bg-white p-12 rounded-[50px] shadow-2xl border border-gray-100">
+            <ResponsiveContainer width="100%" h="100%">
+              <PieChart>
+                <Tooltip 
+                  contentStyle={{ borderRadius: '15px', border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }} 
+                  labelStyle={{ fontWeight: 'black', color: '#000' }}
+                  itemStyle={{ fontWeight: 'bold', color: '#FF0000' }}
+                />
+                <Legend iconSize={12} iconType="circle" wrapperStyle={{ fontWeight: 'bold' }} />
+                <Pie
+                  data={cityData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={100}   // <-- This makes it a "Donut"
+                  outerRadius={180}
+                  fill="#8884d8"
+                  paddingAngle={5}     // <-- Gaps between segments for cleaner animation
+                  dataKey="value"
+                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`} // <-- Labels inside the chart
+                  isAnimationActive={true} // <-- Sick animation enabled
+                  animationBegin={200}
+                  animationDuration={1500}
+                  animationEasing="ease-out" // <-- Smooth entrance
+                >
+                  {cityData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+            
+            {/* C. Central Branding Text (Over the central hollow) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+              <h2 className="text-4xl font-black text-gray-950 leading-none">A NATION <br/> CONNECTED</h2>
+              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm mt-3">The LevelUp Network</p>
+            </div>
+          </div>
+          
+          {/* B. Descriptive Content */}
+          <div className="text-left xl:w-1/3 space-y-8">
+            <h2 className="text-4xl md:text-6xl font-black text-gray-950 mb-6 leading-[0.9] tracking-tight">
+              FROM <span style={{ color: '#FF0000' }}>ROHINI</span> <br/> TO THE WORLD
+            </h2>
+            
+            <div className="flex gap-4 p-6 bg-white rounded-2xl border border-gray-100 shadow-lg">
+                <Target className="w-12 h-12 text-red-600 shrink-0" />
+                <div>
+                  <h4 className="font-extrabold text-xl text-gray-950">Delhi: Our Core (60%)</h4>
+                  <p className="text-gray-700 font-medium">While our roots are in Delhi (60%), the LEVELUP methodology is now trusted from the heart of the capital to the corners of the nation.</p>
+                </div>
+            </div>
+
+            <p className="text-xl text-gray-700 font-bold leading-relaxed italic border-l-8 border-red-200 pl-8 p-6 bg-red-50 rounded-r-3xl">
+              "We mentored students from (almost) every city of India! Our geographic footprint is as dynamic as our curriculum."
+            </p>
           </div>
         </div>
       </section>
+
+      {/* [Student Testimonials would follow here] */}
 
     </div>
   );
-}
+};
+
+export default Home;
