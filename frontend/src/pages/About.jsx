@@ -1,22 +1,22 @@
 import React from 'react';
-import { Award, BookOpen, Briefcase, Globe, Heart, Quote } from 'lucide-react';
+import { Award, BookOpen, Briefcase, Globe, Heart, Quote, TrendingUp } from 'lucide-react';
 
 const About = () => {
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. MESSAGE FROM THE FOUNDER BOX (Distinct Color Section) */}
-      <section className="bg-blue-900 text-white py-20 px-6">
+      {/* 1. MESSAGE FROM THE FOUNDER BOX (Red Section) */}
+      <section className="bg-red-950 text-white py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <Quote className="w-12 h-12 text-blue-400 mx-auto mb-6 opacity-50" />
+          <Quote className="w-12 h-12 text-red-400 mx-auto mb-6 opacity-50" />
           <h2 className="text-3xl md:text-4xl font-black mb-8 leading-tight italic">
             "At LevelUp, education without spirituality is incomplete."
           </h2>
-          <p className="text-xl md:text-2xl text-blue-100 font-medium leading-relaxed mb-6">
+          <p className="text-xl md:text-2xl text-red-100 font-medium leading-relaxed mb-6">
             “Every class begins with the Gayatri Mantra. Our Education Trips start with a 
             Hawan ceremony, to inculcate Sanatana Dharma Values. We're building dharmic, 
             confident, & wealth-conscious leaders who will shape the future.”
           </p>
-          <div className="h-1 w-20 bg-blue-400 mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-red-500 mx-auto rounded-full"></div>
         </div>
       </section>
 
@@ -26,7 +26,7 @@ const About = () => {
           <div className="space-y-6">
             <h1 className="text-5xl font-black text-gray-900 tracking-tighter">
               NAMASTE! <br />
-              <span className="text-blue-600 underline decoration-4 underline-offset-8">OUR STORY</span>
+              <span className="text-red-600 underline decoration-4 underline-offset-8">OUR STORY</span>
             </h1>
             <p className="text-gray-700 text-lg leading-relaxed">
               I started my Education Journey in Maths back in 2008 when I was myself in class 10. 
@@ -38,7 +38,7 @@ const About = () => {
               consultant at <strong>Ernst & Young (EY)</strong>, I realized my true calling: 
               to transform how students experience mathematics.
             </p>
-            <div className="bg-blue-50 p-6 rounded-2xl border-l-8 border-blue-600">
+            <div className="bg-red-50 p-6 rounded-2xl border-l-8 border-red-600">
               <p className="text-gray-800 italic font-medium">
                 "Our mission isn't just academic excellence—though we're proud that over 100 students 
                 scored 90+ in 2025. Our real mission is to make students fall in love with studies 
@@ -47,7 +47,7 @@ const About = () => {
             </div>
             <div className="pt-4">
               <h3 className="text-2xl font-bold text-gray-900">Vaibhav Kukreja</h3>
-              <p className="text-blue-600 font-bold">Founder, LevelUp Academy</p>
+              <p className="text-red-600 font-bold">Founder, LevelUp Academy</p>
               <p className="text-gray-500 text-sm mt-2">Co-Founder: Ankita Kukreja</p>
             </div>
           </div>
@@ -58,7 +58,7 @@ const About = () => {
             
             <div className="space-y-8">
               <div className="flex gap-4">
-                <Award className="text-blue-600 w-8 h-8 shrink-0" />
+                <Award className="text-red-600 w-8 h-8 shrink-0" />
                 <div>
                   <h4 className="font-bold text-gray-900">ISB Hyderabad Alumnus</h4>
                   <p className="text-gray-600">MBA - Rank Holder of Indian School of Business (ISB).</p>
@@ -66,7 +66,7 @@ const About = () => {
               </div>
 
               <div className="flex gap-4">
-                <Briefcase className="text-blue-600 w-8 h-8 shrink-0" />
+                <Briefcase className="text-red-600 w-8 h-8 shrink-0" />
                 <div>
                   <h4 className="font-bold text-gray-900">Ex-EY Senior Consultant</h4>
                   <p className="text-gray-600">Strategic experience at Ernst & Young (Big 4 Firm).</p>
@@ -74,7 +74,7 @@ const About = () => {
               </div>
 
               <div className="flex gap-4">
-                <Globe className="text-blue-600 w-8 h-8 shrink-0" />
+                <Globe className="text-red-600 w-8 h-8 shrink-0" />
                 <div>
                   <h4 className="font-bold text-gray-900">Global Hackathon Winner</h4>
                   <p className="text-gray-600">Awarded ₹10 Lakh by Hon. Shri Narendra Modi Ji for innovation.</p>
@@ -82,7 +82,7 @@ const About = () => {
               </div>
 
               <div className="flex gap-4">
-                <TrendingUp className="text-blue-600 w-8 h-8 shrink-0" />
+                <TrendingUp className="text-red-600 w-8 h-8 shrink-0" />
                 <div>
                   <h4 className="font-bold text-gray-900">Founder, ElevenX Consultancy</h4>
                   <p className="text-gray-600">Bagged Asia’s largest Urban Mobility project in Himachal Pradesh.</p>
@@ -95,9 +95,5 @@ const About = () => {
     </div>
   );
 };
-
-const TrendingUp = ({className}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
-);
 
 export default About;
