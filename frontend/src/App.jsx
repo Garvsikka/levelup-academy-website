@@ -9,6 +9,7 @@ import Courses from "./pages/Courses"
 import CourseDetail from "./pages/CourseDetail"
 import About from "./pages/About"
 import Programs from "./pages/Programs"
+import Philosophy from "./pages/Philosophy" // Added this import
 import Contact from "./pages/Contact"
 import FAQ from "./pages/FAQ"
 import NotFound from "./pages/NotFound"
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/courses/:slug" element={<CourseDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/philosophy" element={<Philosophy />} /> {/* Added this route */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="*" element={<NotFound />} />
