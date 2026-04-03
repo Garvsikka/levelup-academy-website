@@ -2,67 +2,70 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import "./Philosophy.css";
 
-/* ─── Node data ─── */
-/* SVG grid: viewBox="-500 -500 1000 1000", origin = screen centre     */
-/* Path endpoints are inset to the nearest card edge, not the centre   */
 const NODES = [
   {
     id: 0,
-    /* card centre (SVG units) */ cx: -320, cy: -245,
-    /* card position offset   */ cardLeft: "calc(50% - 180px - 80px)", cardTop: "calc(50% - 126px - 55px)",
+    ex: -390, ey: -240,
+    bx1: -140, by1: -80, bx2: -300, by2: -190,
+    cardLeft: "calc(50% - 390/1200*100% - 110px)",
+    cardTop:  "calc(50% - 240/800*100% - 70px)",
     title: "100X YOUR FAMILY WEALTH",
     body: "That's the ultimate goal we are studying for. Academic success is the passport to financial success.",
-    /* Bézier controls */ bx1: -120, by1: -70, bx2: -260, by2: -180,
     delay: 0,
   },
   {
     id: 1,
-    cx: -392, cy: 0,
-    cardLeft: "calc(50% - 216px - 80px)", cardTop: "calc(50% - 55px)",
+    ex: -490, ey: 0,
+    bx1: -140, by1: 10, bx2: -340, by2: 0,
+    cardLeft: "calc(50% - 490/1200*100% - 110px)",
+    cardTop:  "calc(50% - 70px)",
     title: "ROOTED IN VALUES & CHARACTER BUILDING",
     body: "Every class begins with the Gayatri Mantra. Education without spirituality & values is incomplete.",
-    bx1: -110, by1: 15, bx2: -290, by2: 0,
     delay: 0.03,
   },
   {
     id: 2,
-    cx: -320, cy: 245,
-    cardLeft: "calc(50% - 180px - 80px)", cardTop: "calc(50% + 126px - 55px)",
+    ex: -390, ey: 240,
+    bx1: -140, by1: 80, bx2: -300, by2: 190,
+    cardLeft: "calc(50% - 390/1200*100% - 110px)",
+    cardTop:  "calc(50% + 240/800*100% - 70px)",
     title: "PERSONALITY DEVELOPMENT IS CORE",
-    body: "It is part of the curriculum at LEVELUP. Knowledge w/o communication skills & confidence is incomplete.",
-    bx1: -110, by1: 70, bx2: -260, by2: 180,
+    body: "Knowledge w/o communication skills & confidence is incomplete. It's part of the LEVELUP curriculum.",
     delay: 0.06,
   },
   {
     id: 3,
-    cx: 320, cy: -245,
-    cardLeft: "calc(50% + 180px - 80px)", cardTop: "calc(50% - 126px - 55px)",
+    ex: 390, ey: -240,
+    bx1: 140, by1: -80, bx2: 300, by2: -190,
+    cardLeft: "calc(50% + 390/1200*100% - 110px)",
+    cardTop:  "calc(50% - 240/800*100% - 70px)",
     title: "HONOR YOUR SCHOOL TEACHERS",
     body: "They are the core foundation of education. We can complement schools, never replace them.",
-    bx1: 120, by1: -70, bx2: 260, by2: -180,
     delay: 0.02,
   },
   {
     id: 4,
-    cx: 392, cy: 0,
-    cardLeft: "calc(50% + 216px - 80px)", cardTop: "calc(50% - 55px)",
+    ex: 490, ey: 0,
+    bx1: 140, by1: 10, bx2: 340, by2: 0,
+    cardLeft: "calc(50% + 490/1200*100% - 110px)",
+    cardTop:  "calc(50% - 70px)",
     title: "REPETITION IS THE MOTHER OF LEARNING",
     body: "Every class starts with a 10-min formula test. Mastery comes from repetition, not blind practice.",
-    bx1: 110, by1: 15, bx2: 290, by2: 0,
     delay: 0.04,
   },
   {
     id: 5,
-    cx: 320, cy: 245,
-    cardLeft: "calc(50% + 180px - 80px)", cardTop: "calc(50% + 126px - 55px)",
+    ex: 390, ey: 240,
+    bx1: 140, by1: 80, bx2: 300, by2: 190,
+    cardLeft: "calc(50% + 390/1200*100% - 110px)",
+    cardTop:  "calc(50% + 240/800*100% - 70px)",
     title: "GAMIFICATION & CINEMATIC TEACHING",
-    body: "We make educational games where problems unlock levels. How ChatGPT & self-driving cars work?",
-    bx1: 110, by1: 70, bx2: 260, by2: 180,
+    body: "Problems unlock levels. How ChatGPT & self-driving cars work? You'll find out here.",
     delay: 0.07,
   },
 ];
 
-const SNAKE_DUR = 0.28; // seconds
+const SNAKE_DUR = 0.28;
 
 export default function Philosophy() {
   const pathRefs = useRef([]);
@@ -70,13 +73,11 @@ export default function Philosophy() {
   const [visible, setVisible] = useState(Array(6).fill(false));
 
   useEffect(() => {
-    // Measure real path lengths after mount
     const lengths = pathRefs.current.map((el) =>
       el ? el.getTotalLength() : 800
     );
     setPathLengths(lengths);
 
-    // Reveal each card once its snake finishes
     NODES.forEach((n) => {
       setTimeout(() => {
         setVisible((prev) => {
@@ -89,12 +90,10 @@ export default function Philosophy() {
   }, []);
 
   return (
-    <div className="philosophy-bg relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-
-      {/* ── SVG layer ── */}
+    <div className="philosophy-bg">
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="-500 -500 1000 1000"
+        viewBox="-600 -400 1200 800"
         preserveAspectRatio="xMidYMid meet"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -104,7 +103,8 @@ export default function Philosophy() {
               key={n.id}
               id={`snakeGrad${n.id}`}
               gradientUnits="userSpaceOnUse"
-              x1="0" y1="0" x2={n.cx} y2={n.cy}
+              x1="0" y1="0"
+              x2={n.ex} y2={n.ey}
             >
               <stop offset="0%"   stopColor="#ff2200" />
               <stop offset="50%"  stopColor="#ff6600" />
@@ -112,7 +112,7 @@ export default function Philosophy() {
             </linearGradient>
           ))}
           <filter id="snakeGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="b" />
+            <feGaussianBlur stdDeviation="5" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
@@ -120,64 +120,32 @@ export default function Philosophy() {
           </filter>
         </defs>
 
-        {/* Snakes */}
         {NODES.map((n) => (
           <path
             key={n.id}
             ref={(el) => (pathRefs.current[n.id] = el)}
             className={`snake-path snake-${n.id}`}
-            d={`M 0 0 C ${n.bx1} ${n.by1}, ${n.bx2} ${n.by2}, ${n.cx} ${n.cy}`}
+            d={`M 0 0 C ${n.bx1} ${n.by1}, ${n.bx2} ${n.by2}, ${n.ex} ${n.ey}`}
             stroke={`url(#snakeGrad${n.id})`}
             filter="url(#snakeGlow)"
             style={{ "--path-length": pathLengths[n.id] }}
           />
         ))}
 
-        {/* Hub */}
         <circle
           className="hub-circle"
-          cx="0" cy="0" r="88"
+          cx="0" cy="0" r="115"
           fill="#0a0a0a"
           stroke="#ff4400"
-          strokeWidth="2"
+          strokeWidth="2.5"
         />
-        <circle cx="0" cy="0" r="78" fill="none" stroke="#ff220030" strokeWidth="1" />
+        <circle cx="0" cy="0" r="102" fill="none" stroke="#ff220025" strokeWidth="1" />
 
-        {/* Hub text */}
-        <text
-          x="0" y="-30"
-          textAnchor="middle"
-          fontFamily="'Rajdhani', sans-serif"
-          fontSize="11"
-          fill="#ff6600"
-          letterSpacing="4"
-        >
-          iconic
-        </text>
-        <text
-          x="0" y="-4"
-          textAnchor="middle"
-          fontFamily="'Black Han Sans', Impact, sans-serif"
-          fontWeight="900"
-          fontSize="26"
-          fill="white"
-          letterSpacing="3"
-        >
-          LEVELUP
-        </text>
-        <text
-          x="0" y="18"
-          textAnchor="middle"
-          fontFamily="'Rajdhani', sans-serif"
-          fontSize="10"
-          fill="#ff6600"
-          letterSpacing="5"
-        >
-          PHILOSOPHY
-        </text>
+        <text x="0" y="-40" textAnchor="middle" fontFamily="'Rajdhani', sans-serif" fontSize="14" fill="#ff6600" letterSpacing="5">iconic</text>
+        <text x="0" y="-2"  textAnchor="middle" fontFamily="'Black Han Sans', Impact, sans-serif" fontWeight="900" fontSize="38" fill="white" letterSpacing="4">LEVELUP</text>
+        <text x="0" y="26"  textAnchor="middle" fontFamily="'Rajdhani', sans-serif" fontSize="13" fill="#ff6600" letterSpacing="7">PHILOSOPHY</text>
       </svg>
 
-      {/* ── Node cards ── */}
       <div className="absolute inset-0 pointer-events-none">
         {NODES.map((n) => (
           <motion.div
@@ -195,4 +163,4 @@ export default function Philosophy() {
       </div>
     </div>
   );
-} 
+}
