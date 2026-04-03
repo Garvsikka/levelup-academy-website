@@ -12,6 +12,7 @@ export default function Navbar() {
     { name: "Courses", path: "/courses" },
     { name: "About", path: "/about" },
     { name: "Programs", path: "/programs" },
+    { name: "Philosophy", path: "/philosophy" }, // Added Philosophy here
     { name: "FAQ", path: "/faq" },
     { name: "Contact", path: "/contact" },
   ]
