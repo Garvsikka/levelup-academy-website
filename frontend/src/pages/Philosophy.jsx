@@ -2,15 +2,15 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const philosophyData = [
-  // LEFT COLUMN
-  { id: 1, title: "ROOTED IN VALUES & CHARACTER", desc: "Every class begins with the Gayatri Mantra. Education without values is incomplete.", x: -380, y: -180, arcDir: -1 },
-  { id: 2, title: "PERSONALITY DEVELOPMENT", desc: "Knowledge w/o communication skills & confidence is incomplete. Part of our DNA.", x: -380, y: 50, arcDir: -1 },
-  { id: 3, title: "GAMIFICATION & CINEMATIC", desc: "Educational games where problems unlock levels. ChatGPT & Self-driving car logic.", x: -320, y: 260, arcDir: -1 },
+  // LEFT COLUMN - Balanced for 13-inch height
+  { id: 1, title: "ROOTED IN VALUES & CHARACTER", desc: "Every class begins with the Gayatri Mantra. Education without values is incomplete.", x: -400, y: -160 },
+  { id: 2, title: "PERSONALITY DEVELOPMENT", desc: "Knowledge w/o communication skills & confidence is incomplete. Part of our DNA.", x: -400, y: 40 },
+  { id: 3, title: "GAMIFICATION & CINEMATIC", desc: "Educational games where problems unlock levels. ChatGPT & Self-driving car logic.", x: -350, y: 240 },
   
-  // RIGHT COLUMN
-  { id: 4, title: "100X YOUR FAMILY WEALTH", desc: "The ultimate goal we are studying for. Academic success is the passport to financial success.", x: 380, y: -260, arcDir: 1 },
-  { id: 5, title: "HONOR YOUR SCHOOL TEACHERS", desc: "They are the core foundation of education. We complement schools, never replace them.", x: 340, y: -40, arcDir: 1 },
-  { id: 6, title: "REPETITION IS MOTHER OF LEARNING", desc: "10 min formula tests every class. Mastery comes from repetition, not blind practice.", x: 380, y: 200, arcDir: 1 },
+  // RIGHT COLUMN - Balanced for 13-inch height
+  { id: 4, title: "100X YOUR FAMILY WEALTH", desc: "The ultimate goal we are studying for. Academic success is the passport to financial success.", x: 400, y: -220 },
+  { id: 5, title: "HONOR YOUR SCHOOL TEACHERS", desc: "They are the core foundation of education. We complement schools, never replace them.", x: 360, y: -20 },
+  { id: 6, title: "REPETITION IS MOTHER OF LEARNING", desc: "10 min formula tests every class. Mastery comes from repetition, not blind practice.", x: 400, y: 180 },
 ];
 
 export default function Philosophy() {
@@ -18,7 +18,7 @@ export default function Philosophy() {
     <div className="pt-32 min-h-[140vh] bg-black text-white flex items-center justify-center overflow-x-hidden pb-40">
       <div className="relative">
         
-        {/* THE ARCS (Curved snaking lines) */}
+        {/* THE ARCS (SVG Layer) */}
         <svg className="absolute overflow-visible pointer-events-none" style={{ top: 0, left: 0 }}>
           <defs>
             <linearGradient id="warm-grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -27,56 +27,64 @@ export default function Philosophy() {
             </linearGradient>
           </defs>
           {philosophyData.map((item) => {
-            // "S" Curve Logic: Pulls control point out then back
-            const cx = item.x * 0.5; 
-            const cy = item.y * 0.1; 
+            // Cubic Bezier: M (start) C (control1, control2, end)
+            // We start at 0,0 (center of the orange hub)
+            const cx1 = item.x * 0.4; // Mid-way pull
+            const cy1 = 0;           // Keep horizontal exit from hub
+            const cx2 = item.x * 0.6; // Second pull toward final Y
+            const cy2 = item.y;
 
             return (
               <motion.path
                 key={`arc-${item.id}`}
-                d={`M 0 0 C ${cx} 0, ${cx} ${item.y}, ${item.x} ${item.y}`}
+                d={`M 0 0 C ${cx1} ${cy1}, ${cx2} ${cy2}, ${item.x} ${item.y}`}
                 fill="none"
                 stroke="url(#warm-grad)"
-                strokeWidth="2"
-                strokeDasharray="8,4"
+                strokeWidth="2.5"
+                strokeDasharray="10,5"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.5 }}
-                transition={{ duration: 1.2, delay: 0.5 }}
+                animate={{ pathLength: 1, opacity: 0.6 }}
+                transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
               />
             );
           })}
         </svg>
 
-        {/* THE CENTRAL HUB (Matched to your Design Text) */}
+        {/* THE CENTRAL HUB (Restored Orange Circle) */}
         <motion.div 
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          className="relative z-50 flex flex-col items-center justify-center text-center p-6"
+          initial={{ scale: 0, rotate: -10 }}
+          animate={{ scale: 1, rotate: 0 }}
+          className="relative z-50 w-72 h-72 rounded-full bg-gradient-to-br from-orange-600 via-orange-500 to-yellow-500 p-[6px] shadow-[0_0_100px_rgba(234,88,12,0.3)]"
         >
-           <div className="absolute inset-0 bg-orange-600/20 blur-[80px] rounded-full"></div>
-           <span className="text-xl font-light tracking-[0.3em] text-gray-400 uppercase">the iconic</span>
-           <h2 className="text-6xl font-black text-white leading-none tracking-tighter">LEVELUP</h2>
-           <h2 className="text-4xl font-light tracking-[0.2em] text-gray-300 uppercase">PHILOSOPHY</h2>
+          {/* Inner Black Circle for Contrast */}
+          <div className="w-full h-full bg-black rounded-full flex flex-col items-center justify-center text-center p-6 border-4 border-black">
+            <span className="text-[10px] font-black tracking-[0.4em] text-orange-500 uppercase mb-1">the iconic</span>
+            <h2 className="text-4xl font-black text-white leading-none tracking-tighter mb-1">LEVELUP</h2>
+            <h2 className="text-lg font-light tracking-[0.2em] text-gray-400 uppercase">PHILOSOPHY</h2>
+          </div>
+          
+          {/* Outer Glow Ring */}
+          <div className="absolute inset-0 rounded-full border border-white/10 animate-pulse"></div>
         </motion.div>
 
-        {/* THE BUBBLES (Box Layout) */}
+        {/* THE BUBBLES */}
         {philosophyData.map((item, index) => (
           <motion.div
             key={item.id}
-            initial={{ opacity: 0, x: item.x * 1.2, y: item.y }}
-            animate={{ opacity: 1, x: item.x, y: item.y }}
-            transition={{ delay: 0.8 + index * 0.1, type: "spring", damping: 20 }}
-            className="absolute z-50 w-[300px]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1 + index * 0.1 }}
+            className="absolute z-40 w-[300px]"
             style={{
               top: 0,
               left: 0,
-              transform: `translate(-50%, -50%)`, // Centers the box on the coordinate
+              transform: `translate(calc(-50% + ${item.x}px), calc(-50% + ${item.y}px))`,
             }}
           >
-            <div className="bg-zinc-950/90 backdrop-blur-md border-2 border-orange-900/30 p-5 rounded-2xl hover:border-orange-500 transition-all group shadow-2xl">
+            <div className="bg-zinc-950/95 backdrop-blur-md border-2 border-orange-900/40 p-5 rounded-2xl hover:border-yellow-500 transition-all group shadow-2xl">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                <h3 className="text-[13px] font-black text-orange-500 group-hover:text-yellow-500 tracking-wider uppercase">
+                <div className="w-2 h-2 bg-orange-500 rounded-full group-hover:bg-yellow-400 shadow-[0_0_8px_rgba(234,88,12,0.8)]"></div>
+                <h3 className="text-[13px] font-black text-orange-500 group-hover:text-yellow-400 tracking-wider uppercase italic">
                   {item.title}
                 </h3>
               </div>
