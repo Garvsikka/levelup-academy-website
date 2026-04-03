@@ -1,48 +1,12 @@
 import React from 'react';
-import { Award, Briefcase, Globe, Quote, TrendingUp } from 'lucide-react';
-// import founderImage from '../assets/images/vaibhav-kukreja.jpg'; // <-- Placeholder: Import your actual image here
+import { Award, Briefcase, Globe, Quote, TrendingUp, User } from 'lucide-react';
+// import founderImage from '../assets/images/vaibhav-kukreja.jpg'; // <-- If you have the image, import it here
 
 const About = () => {
   return (
     <div className="bg-white min-h-screen font-sans">
       
-      {/* 1. FOUNDER HERO SECTION ( Dominant Image + Core Manifesto ) */}
-      <section style={{ backgroundColor: '#FF0000' }} className="text-white py-12 md:py-0">
-        <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-12 items-center gap-12 px-6 md:px-12">
-          
-          {/* A. THE FOUNDER'S IMAGE ( Occupies a good portion of the page ) */}
-          <div className="md:col-span-7 flex justify-center md:justify-end">
-            <div className="relative group max-w-2xl">
-              <div className="absolute inset-0 bg-white rounded-t-[100px] rounded-br-[100px] transform translate-x-4 translate-y-4"></div>
-              {/* --- IMAGE PLACEHOLDER --- */}
-              {/* Replace the <img> below with: <img src={founderImage} alt="Vaibhav Kukreja..." /> */}
-              <img 
-                src="https://via.placeholder.com/600x700/FFFFFF/FF0000?text=Vaibhav+Kukreja" 
-                alt="Vaibhav Kukreja - Founder, LevelUp Academy" 
-                className="relative z-10 w-full h-auto rounded-t-[100px] rounded-br-[100px] shadow-2xl object-cover"
-              />
-            </div>
-          </div>
-
-          {/* B. CORE SPIRITUAL MANIFESTO ( Respect to the photo ) */}
-          <div className="md:col-span-5 text-center md:text-left space-y-8">
-            <Quote className="w-16 h-16 text-white opacity-40 mx-auto md:mx-0" />
-            <h1 className="text-4xl md:text-6xl font-black leading-none tracking-tighter">
-              A Mission <br /> Beyond Academics
-            </h1>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 italic text-white/90">
-              "At LevelUp, education without spirituality is incomplete."
-            </h2>
-            <div className="space-y-6 text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
-                <p>“Every class begins with the Gayatri Mantra. Our Education Trips start with a Hawan ceremony...”</p>
-                <p>“...to inculcate Sanatana Dharma Values. We're building dharmic, confident, & wealth-conscious leaders.”</p>
-            </div>
-            <div className="h-1 w-20 bg-white mx-auto md:mx-0 rounded-full"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. THE JOURNEY & THE RESULTS SECTION */}
+      {/* 1. THE JOURNEY & THE RESULTS SECTION (Now at the Top) */}
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-10 gap-16 items-center">
           <div className="md:col-span-6 space-y-8">
@@ -51,14 +15,14 @@ const About = () => {
               <span style={{ color: '#FF0000' }} className="underline decoration-4 underline-offset-8">OUR STORY</span>
             </h1>
             <p className="text-gray-700 text-lg leading-relaxed font-medium">
-              I started my Education Journey in Maths back in 2008 when I was myself in class 10. The sheer excitement & passion for teaching always fuelled my love for the subject.
+              I started my Education Journey in Maths back in 2008 when I was myself in class 10. The sheer excitement & passion for teaching & guiding my juniors always fuelled my love for the subject.
             </p>
             <div style={{ backgroundColor: '#FFF5F5', borderLeftColor: '#FF0000' }} className="p-8 rounded-3xl border-l-8 shadow-sm">
                 <h3 className="text-3xl font-black text-gray-950 mb-4 tracking-tight">The LevelUp Real Mission</h3>
                 <p className="text-gray-800 italic font-medium text-lg leading-relaxed">
                     "Our mission isn't just academic excellence—though we're proud that over 100 students 
-                    scored 90+ in 2025. Our real mission is to make students fall in love with studies 
-                    and see the connection to AI, Self-driving cars, and Entrepreneurship."
+                    scored 90+ in 2025. Our real mission is deeper: to make students fall in love 
+                    with studies and see the connection to AI, Self-driving cars, and Entrepreneurship."
                 </p>
             </div>
             <div className="pt-6">
@@ -68,7 +32,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* 3. DISTINGUISHED PROFILE (THE TIMELINE) */}
+          {/* 2. FOUNDER CREDENTIALS (THE TIMELINE) */}
           <div className="md:col-span-4 bg-gray-50 p-10 rounded-[40px] shadow-xl border border-gray-100">
             <h2 className="text-3xl font-black text-gray-950 mb-10 border-b pb-4 text-center">Founder Credentials</h2>
             
@@ -94,6 +58,39 @@ const About = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CORE MANIFESTO & IMAGE SECTION (Vibrant #FF0000 - Shifted to the Bottom) */}
+      <section style={{ backgroundColor: '#FF0000' }} className="text-white py-20 px-6">
+        <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-12 items-center gap-12 px-6 md:px-12">
+          
+          {/* A. THE FOUNDER'S IMAGE PLACEHOLDER (Grey Box) */}
+          <div className="md:col-span-7 flex justify-center md:justify-end">
+            <div className="relative max-w-2xl w-full">
+              {/* --- GREY BOX PLACEHOLDER --- */}
+              {/* If you have the image, replace this entire div with <img src={founderImage} /> */}
+              <div className="bg-gray-300 w-full h-[600x700] rounded-t-[100px] rounded-br-[100px] shadow-2xl flex items-center justify-center">
+                <User className="w-32 h-32 text-gray-500" />
+              </div>
+            </div>
+          </div>
+
+          {/* B. CORE SPIRITUAL MANIFESTO */}
+          <div className="md:col-span-5 text-center md:text-left space-y-8">
+            <Quote className="w-16 h-16 text-white opacity-40 mx-auto md:mx-0" />
+            <h1 className="text-4xl md:text-6xl font-black leading-none tracking-tighter">
+              A Mission <br /> Beyond Academics
+            </h1>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 italic text-white/90">
+              "At LevelUp, education without spirituality is incomplete."
+            </h2>
+            <div className="space-y-6 text-xl md:text-2xl font-medium leading-relaxed max-w-xl">
+                <p>“Every class begins with the Gayatri Mantra. Our Education Trips start with a Hawan ceremony...”</p>
+                <p>“...to inculcate Sanatana Dharma Values. We're building dharmic, confident, & wealth-conscious leaders.”</p>
+            </div>
+            <div className="h-1 w-20 bg-white mx-auto md:mx-0 rounded-full"></div>
           </div>
         </div>
       </section>
