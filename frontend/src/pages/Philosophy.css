@@ -1,11 +1,64 @@
-@keyframes snake-grow {
-  from { stroke-dashoffset: 1500; }
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Black+Han+Sans&display=swap');
+
+/* ── Snake draw animation ── */
+.snake-path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  animation: drawSnake 0.28s ease-out forwards;
+  stroke-dashoffset: var(--path-length);
+  stroke-dasharray: var(--path-length);
+}
+
+@keyframes drawSnake {
   to { stroke-dashoffset: 0; }
 }
 
-.philosophy-snake {
-  stroke-dasharray: 1500;
-  stroke-dashoffset: 1500;
-  animation: snake-grow 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5));
+.snake-0 { animation-delay: 0s; }
+.snake-1 { animation-delay: 0.03s; }
+.snake-2 { animation-delay: 0.06s; }
+.snake-3 { animation-delay: 0.02s; }
+.snake-4 { animation-delay: 0.04s; }
+.snake-5 { animation-delay: 0.07s; }
+
+/* ── Hub glow pulse ── */
+.hub-circle {
+  animation: hubPulse 3s ease-in-out infinite;
+}
+
+@keyframes hubPulse {
+  0%, 100% { filter: drop-shadow(0 0 10px #ff4400); }
+  50%       { filter: drop-shadow(0 0 20px #ff7700); }
+}
+
+/* ── Node cards ── */
+.node-card {
+  position: absolute;
+  width: 160px;
+  background: #0d0d0d;
+  border: 1px solid #ff440055;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.node-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #ff6600;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.node-body {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9.5px;
+  color: #aaaaaa;
+  line-height: 1.5;
+}
+
+/* ── Page background ── */
+.philosophy-bg {
+  background: #000000;
 }
