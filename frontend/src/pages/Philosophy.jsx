@@ -1,71 +1,71 @@
+import React from 'react';
+import { ReactFlow, Background, Controls } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+
 const initialNodes = [
   { 
     id: 'root', 
-    type: 'custom', 
-    data: { label: 'THE ICONIC LEVELUP PHILOSOPHY', subtext: 'Core Mission' }, 
-    position: { x: 250, y: 200 } 
+    type: 'default', 
+    data: { label: 'THE ICONIC LEVELUP PHILOSOPHY' }, 
+    position: { x: 250, y: 250 },
+    style: { background: '#000', color: '#FFD700', border: '2px solid #FFD700', fontWeight: 'bold' }
   },
   { 
     id: '1', 
-    type: 'custom', 
-    data: { 
-      label: 'ROOTED IN VALUES & CHARACTER', 
-      subtext: 'Every class begins with Gayatri Mantra. Education without values is incomplete.' 
-    }, 
-    position: { x: 0, y: 0 } 
+    data: { label: 'ROOTED IN VALUES: Gayatri Mantra & Character' }, 
+    position: { x: 0, y: 50 } 
   },
   { 
     id: '2', 
-    type: 'custom', 
-    data: { 
-      label: '100X YOUR FAMILY WEALTH', 
-      subtext: 'Academic success is the passport to financial success and family goals.' 
-    }, 
-    position: { x: 500, y: 0 } 
+    data: { label: '100X YOUR FAMILY WEALTH: Academic Passport' }, 
+    position: { x: 500, y: 50 } 
   },
   { 
     id: '3', 
-    type: 'custom', 
-    data: { 
-      label: 'HONOR YOUR SCHOOL TEACHERS', 
-      subtext: 'The foundation of education. We complement schools, never replace them.' 
-    }, 
-    position: { x: 600, y: 200 } 
+    data: { label: 'HONOR YOUR SCHOOL TEACHERS: Foundation' }, 
+    position: { x: 650, y: 250 } 
   },
   { 
     id: '4', 
-    type: 'custom', 
-    data: { 
-      label: 'REPETITION IS THE MOTHER OF LEARNING', 
-      subtext: '10 mins formula test every class. Mastery comes from repetition, not blind practice.' 
-    }, 
+    data: { label: 'REPETITION: 10 Min Formula Tests' }, 
     position: { x: 500, y: 450 } 
   },
   { 
     id: '5', 
-    type: 'custom', 
-    data: { 
-      label: 'GAMIFICATION & CINEMATIC TEACHING', 
-      subtext: 'Educational games where problems unlock levels (e.g., ChatGPT/Self-driving car logic).' 
-    }, 
+    data: { label: 'GAMIFICATION: Cinematic AI Teaching' }, 
     position: { x: 0, y: 450 } 
   },
   { 
     id: '6', 
-    type: 'custom', 
-    data: { 
-      label: 'PERSONALITY DEVELOPMENT', 
-      subtext: 'Communication skills and confidence are built into the LevelUp curriculum.' 
-    }, 
-    position: { x: -100, y: 200 } 
-  },
+    data: { label: 'PERSONALITY: Confidence & Communication' }, 
+    position: { x: -150, y: 250 } 
+  }
 ];
 
 const initialEdges = [
-  { id: 'e-root-1', source: 'root', target: '1', animated: true },
-  { id: 'e-root-2', source: 'root', target: '2', animated: true },
-  { id: 'e-root-3', source: 'root', target: '3', animated: true },
-  { id: 'e-root-4', source: 'root', target: '4', animated: true },
-  { id: 'e-root-5', source: 'root', target: '5', animated: true },
-  { id: 'e-root-6', source: 'root', target: '6', animated: true },
+  { id: 'e-root-1', source: 'root', target: '1', animated: true, style: { stroke: '#FFD700' } },
+  { id: 'e-root-2', source: 'root', target: '2', animated: true, style: { stroke: '#FFD700' } },
+  { id: 'e-root-3', source: 'root', target: '3', animated: true, style: { stroke: '#FFD700' } },
+  { id: 'e-root-4', source: 'root', target: '4', animated: true, style: { stroke: '#FFD700' } },
+  { id: 'e-root-5', source: 'root', target: '5', animated: true, style: { stroke: '#FFD700' } },
+  { id: 'e-root-6', source: 'root', target: '6', animated: true, style: { stroke: '#FFD700' } },
 ];
+
+// CRITICAL: This "export default" was what Vercel was crying about.
+export default function Philosophy() {
+  return (
+    <div className="pt-24 h-screen bg-black w-full">
+      <div className="h-full w-full">
+        <ReactFlow
+          nodes={initialNodes}
+          edges={initialEdges}
+          fitView
+          style={{ background: '#000' }}
+        >
+          <Background color="#222" gap={20} />
+          <Controls />
+        </ReactFlow>
+      </div>
+    </div>
+  );
+}
