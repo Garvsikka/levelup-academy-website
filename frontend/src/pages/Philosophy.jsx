@@ -2,21 +2,21 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const philosophyData = [
-  { id: 1, title: "100X YOUR FAMILY WEALTH", desc: "That's the ultimate goal we are studying for. Academic success is the passport to financial success.", pos: "top-[-120px] left-[50%] -translate-x-1/2" },
-  { id: 2, title: "ROOTED IN VALUES & CHARACTER", desc: "Every class begins with the Gayatri Mantra. Education without spirituality & values is incomplete.", pos: "top-[20px] left-[-280px]" },
-  { id: 3, title: "HONOR YOUR SCHOOL TEACHERS", desc: "They are the core foundation of education. We complement schools, never replace them.", pos: "top-[20px] right-[-280px]" },
-  { id: 4, title: "PERSONALITY DEVELOPMENT", desc: "Part of the curriculum. Knowledge w/o communication skills & confidence is incomplete.", pos: "bottom-[20px] left-[-280px]" },
-  { id: 5, title: "REPETITION IS MOTHER OF LEARNING", desc: "Every class starts with a 10 min formula test. Mastery comes from repetition, not blind practice.", pos: "bottom-[20px] right-[-280px]" },
-  { id: 6, title: "GAMIFICATION & CINEMATIC", desc: "Educational games where problems unlock levels. How ChatGPT & Self-driving cars work?", pos: "bottom-[-120px] left-[50%] -translate-x-1/2" },
+  { id: 1, title: "100X YOUR FAMILY WEALTH", desc: "That's the ultimate goal we are studying for. Academic success is the passport to financial success.", pos: "top-[-220px] left-[50%] -translate-x-1/2" },
+  { id: 2, title: "ROOTED IN VALUES & CHARACTER", desc: "Every class begins with the Gayatri Mantra. Education without spirituality & values is incomplete.", pos: "top-[-60px] left-[-350px]" },
+  { id: 3, title: "HONOR YOUR SCHOOL TEACHERS", desc: "They are the core foundation of education. We complement schools, never replace them.", pos: "top-[-60px] right-[-350px]" },
+  { id: 4, title: "PERSONALITY DEVELOPMENT", desc: "Part of the curriculum. Knowledge w/o communication skills & confidence is incomplete.", pos: "bottom-[-60px] left-[-350px]" },
+  { id: 5, title: "REPETITION IS MOTHER OF LEARNING", desc: "Every class starts with a 10 min formula test. Mastery comes from repetition, not blind practice.", pos: "bottom-[-60px] right-[-350px]" },
+  { id: 6, title: "GAMIFICATION & CINEMATIC", desc: "Educational games where problems unlock levels. How ChatGPT & Self-driving cars work?", pos: "bottom-[-220px] left-[50%] -translate-x-1/2" },
 ];
 
 export default function Philosophy() {
   return (
-    <div className="pt-32 min-h-screen bg-black text-white flex items-center justify-center overflow-hidden pb-40">
-      <div className="relative w-[300px] h-[300px]">
+    <div className="pt-32 min-h-[120vh] bg-black text-white flex items-center justify-center overflow-x-hidden pb-40">
+      <div className="relative w-[300px] h-[300px] scale-90 md:scale-100">
         
-        {/* SVG Gradient Connections */}
-        <svg className="absolute inset-[-300px] w-[900px] h-[900px] pointer-events-none z-0">
+        {/* SVG Gradient Connections - Expanded Viewport */}
+        <svg className="absolute inset-[-400px] w-[1100px] h-[1100px] pointer-events-none z-0">
           <defs>
             <linearGradient id="warm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#ff4500" />
@@ -24,39 +24,39 @@ export default function Philosophy() {
               <stop offset="100%" stopColor="#ffd700" />
             </linearGradient>
           </defs>
-          {/* Centralized Lines */}
-          <line x1="450" y1="450" x2="450" y2="200" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="5,5" />
-          <line x1="450" y1="450" x2="450" y2="700" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="5,5" />
-          <line x1="450" y1="450" x2="150" y2="350" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="5,5" />
-          <line x1="450" y1="450" x2="750" y2="350" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="5,5" />
-          <line x1="450" y1="450" x2="150" y2="550" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="5,5" />
-          <line x1="450" y1="450" x2="750" y2="550" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="5,5" />
+          {/* Centralized Lines adjusted for new distances */}
+          <line x1="550" y1="550" x2="550" y2="330" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="8,4" />
+          <line x1="550" y1="550" x2="550" y2="770" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="8,4" />
+          <line x1="550" y1="550" x2="200" y2="450" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="8,4" />
+          <line x1="550" y1="550" x2="900" y2="450" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="8,4" />
+          <line x1="550" y1="550" x2="200" y2="650" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="8,4" />
+          <line x1="550" y1="550" x2="900" y2="650" stroke="url(#warm-grad)" strokeWidth="2" strokeDasharray="8,4" />
         </svg>
 
         {/* Central Hub */}
         <motion.div 
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="absolute inset-0 bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500 rounded-full flex flex-col items-center justify-center text-center p-4 z-20 shadow-[0_0_50px_rgba(255,140,0,0.4)] border-4 border-black"
+          className="absolute inset-0 bg-gradient-to-br from-red-600 via-orange-500 to-yellow-500 rounded-full flex flex-col items-center justify-center text-center p-4 z-20 shadow-[0_0_60px_rgba(255,69,0,0.5)] border-8 border-black"
         >
-          <span className="text-xs font-bold text-black/80">THE ICONIC</span>
-          <h2 className="text-2xl font-black text-black leading-tight">LEVELUP<br/>PHILOSOPHY</h2>
+          <span className="text-[10px] font-bold text-black/80 tracking-widest uppercase">The Iconic</span>
+          <h2 className="text-2xl font-black text-black leading-none tracking-tighter">LEVELUP<br/>PHILOSOPHY</h2>
         </motion.div>
 
-        {/* Floating Content Bubbles */}
+        {/* Floating Content Bubbles with Increased Spacing */}
         {philosophyData.map((item, index) => (
           <motion.div
             key={item.id}
-            initial={{ opacity: 0, scale: 0, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.3 + index * 0.1 }}
-            className={`absolute z-30 w-[240px] ${item.pos}`}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 + index * 0.1, type: "spring", stiffness: 120 }}
+            className={`absolute z-30 w-[280px] ${item.pos}`}
           >
-            <div className="bg-zinc-950 border border-orange-500/30 p-4 rounded-xl hover:border-yellow-400 transition-all group">
-              <h3 className="text-sm font-black text-orange-500 mb-2 group-hover:text-yellow-400">
+            <div className="bg-black/80 backdrop-blur-sm border-2 border-orange-600/40 p-5 rounded-2xl hover:border-yellow-500 transition-all group shadow-xl">
+              <h3 className="text-xs font-black text-orange-500 mb-2 group-hover:text-yellow-400 tracking-widest uppercase">
                 {item.title}
               </h3>
-              <p className="text-[11px] text-gray-400 leading-relaxed uppercase tracking-tight">
+              <p className="text-[12px] text-gray-300 leading-relaxed font-medium">
                 {item.desc}
               </p>
             </div>
