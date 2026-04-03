@@ -1,4 +1,4 @@
-@keyframes snake-draw {
+@keyframes snake-grow {
   from { stroke-dashoffset: 1500; }
   to { stroke-dashoffset: 0; }
 }
@@ -6,6 +6,6 @@
 .philosophy-snake {
   stroke-dasharray: 1500;
   stroke-dashoffset: 1500;
-  animation: snake-draw 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  filter: drop-shadow(0 0 12px rgba(255, 69, 0, 0.4));
+  animation: snake-grow 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5));
 }
