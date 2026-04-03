@@ -1,27 +1,16 @@
 @keyframes snake-draw {
   from {
-    stroke-dashoffset: 1000;
+    stroke-dashoffset: 1500;
   }
   to {
     stroke-dashoffset: 0;
   }
 }
 
-.fire-arc {
-  stroke-dasharray: 1000; /* Long enough to cover any arc */
-  stroke-dashoffset: 1000;
-  animation: snake-draw 2.5s ease-out forwards;
-  animation-delay: 0.5s;
-  filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.4));
-}
-
-/* Optional: Make the dash move like a current after it finishes drawing */
-.fire-arc-flow {
-  stroke-dasharray: 15, 10;
-  animation: snake-draw 2.5s ease-out forwards, flow 20s linear infinite;
-}
-
-@keyframes flow {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -1000; }
+.philosophy-snake {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: snake-draw 2s ease-in-out forwards;
+  /* Glow effect */
+  filter: drop-shadow(0 0 12px rgba(255, 69, 0, 0.5));
 }
