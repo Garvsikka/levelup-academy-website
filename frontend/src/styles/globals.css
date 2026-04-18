@@ -6,14 +6,18 @@
 @layer components {
   /* THE SUMIT DANG STYLE CARD - VOLCANIC VERSION */
   .volcanic-card {
-    @apply bg-dark-card border border-white/5 rounded-[2rem] p-8 transition-all duration-500 
-           hover:border-brand-red/40 hover:shadow-lg hover:shadow-brand-red/20;
+    @apply bg-dark-card border border-white/5 rounded-2xl p-8 transition-all duration-500;
+  }
+  .volcanic-card:hover {
+    @apply border-brand-red/40 shadow-lg shadow-brand-red/20;
   }
   
   /* THE HIGH-IMPACT BUTTON */
   .volcanic-btn {
-    @apply bg-brand-red hover:bg-brand-orange text-white font-black py-4 px-10 rounded-xl 
-           transition-all uppercase tracking-tighter shadow-lg shadow-brand-red/20;
+    @apply bg-brand-red text-white font-black py-4 px-10 rounded-xl transition-all uppercase tracking-tighter shadow-lg shadow-brand-red/20;
+  }
+  .volcanic-btn:hover {
+    @apply bg-brand-orange;
   }
 
   /* THE GRADIENT HEADING ACCENT */
@@ -28,4 +32,3 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
-
