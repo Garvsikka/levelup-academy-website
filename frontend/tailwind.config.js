@@ -3,16 +3,16 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./frontend/**/*.{js,ts,jsx,tsx}",   // added
+    "./frontend/src/styles/**/*.css"     // added for globals.css
   ],
   theme: {
     extend: {
       colors: {
-        // The Black Base
         'black': '#000000', 
         'dark-card': '#0a0a0a',
-        // The Volcanic Palette
-        'brand-red': '#FF0000',   // corrected red
-        'brand-orange': '#FF7E00', // corrected orange
+        'brand-red': '#FF0000',
+        'brand-orange': '#FF7E00',
         'brand-yellow': '#FFCC00',
       },
       backgroundImage: {
