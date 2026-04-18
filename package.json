@@ -13,10 +13,16 @@
     "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
     "start": "cd backend && npm start"
   },
-  "keywords": ["mern", "education", "academy", "maths", "ai"],
+  "keywords": [
+    "mern",
+    "education",
+    "academy",
+    "maths",
+    "ai"
+  ],
   "author": "LevelUp Academy",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.2"
   }
 }
