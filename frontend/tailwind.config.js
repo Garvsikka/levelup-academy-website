@@ -11,12 +11,12 @@ export default {
         'black': '#000000', 
         'dark-card': '#0a0a0a',
         // The Volcanic Palette
-        'brand-red': '#FF0000',
-        'brand-orange': '#FF6A00',
+        'brand-red': '#FF0000',   // corrected red
+        'brand-orange': '#FF7E00', // corrected orange
         'brand-yellow': '#FFCC00',
       },
       backgroundImage: {
-        'lava-gradient': 'linear-gradient(to right, #FF0000, #FF6A00, #FFCC00)',
+        'lava-gradient': 'linear-gradient(to right, #FF0000, #FF7E00, #FFCC00)',
       }
     },
   },
