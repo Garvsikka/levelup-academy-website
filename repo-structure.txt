@@ -1,0 +1,60 @@
+.
+├── README.md
+├── backend
+│   ├── config
+│   │   └── db.js
+│   ├── middleware
+│   │   └── errorHandler.js
+│   ├── models
+│   │   └── StudentEnquiry.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── routes
+│   │   ├── courses.js
+│   │   ├── enquiry.js
+│   │   └── founder.js
+│   └── server.js
+├── frontend
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   ├── robots.txt
+│   │   ├── site.webmanifest
+│   │   └── sitemap.xml
+│   ├── src
+│   │   ├── App.jsx
+│   │   ├── components
+│   │   │   ├── AboutFounder.jsx
+│   │   │   ├── CinematicTeaching.jsx
+│   │   │   ├── CoursesPage.jsx
+│   │   │   ├── EnquiryForm.jsx
+│   │   │   ├── ExitIntentPopup.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── HeroSection.jsx
+│   │   │   ├── IssueSolver.jsx
+│   │   │   ├── LevelUpLife.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   └── PhilosophyGrid.jsx
+│   │   ├── main.jsx
+│   │   ├── pages
+│   │   │   ├── About.jsx
+│   │   │   ├── Contact.jsx
+│   │   │   ├── CourseDetail.jsx
+│   │   │   ├── Courses.jsx
+│   │   │   ├── FAQ.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── NotFound.jsx
+│   │   │   ├── Philosophy.css
+│   │   │   ├── Philosophy.jsx
+│   │   │   └── Programs.jsx
+│   │   └── styles
+│   │       └── globals.css
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── package-lock.json
+├── package.json
+└── repo-structure.txt
+
+12 directories, 46 files
