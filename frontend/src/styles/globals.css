@@ -26,35 +26,41 @@
   
   .volcanic-btn:hover {
     @apply bg-brand-orange;
-    box-shadow: 0 0 20px theme('colors.brand-red');
+    box-shadow: 0 0 25px theme('colors.brand-red');
   }
 
-  /* THE GRADIENT HEADING ACCENT - REINFORCED */
-  .heading-accent {
-    /* 1. Force the gradient to be a background */
-    background-image: linear-gradient(to right, theme('colors.brand-red'), theme('colors.brand-orange'));
-    
-    /* 2. Critical clipping properties */
-    -webkit-background-clip: text;
-    background-clip: text;
-    
-    /* 3. Make the actual text fill disappear so the background shows through */
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    
-    /* 4. Ensure it has a layout block to render on */
-    display: inline-block;
-    
-    /* 5. Force it to the front */
+  /* THE GRADIENT HEADING ACCENT - REINFORCED FOR VISIBILITY */
+  /* Using body prefix to beat any conflicting styles */
+  body .heading-accent {
+    background-image: linear-gradient(to right, #FF0000, #FFA500, #FFFF00) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    display: inline-block !important;
     position: relative;
     z-index: 10;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 
-/* GLOBAL RESET TO ENSURE BLACK BACKGROUND */
+/* GLOBAL RESET TO ENSURE BLACK BACKGROUND & TEXT VISIBILITY */
 body {
   @apply bg-black text-white antialiased;
   margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden; /* Prevents unwanted scrolls from spider lines */
+  overflow-x: hidden; /* Prevents horizontal scroll from spider lines */
+}
+
+/* Fix for standard selection behavior that turns text white/blue */
+::selection {
+  background: rgba(255, 0, 0, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(255, 0, 0, 0.3);
+  color: white;
 }
