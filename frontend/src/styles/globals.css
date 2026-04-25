@@ -7,22 +7,47 @@
   /* THE SUMIT DANG STYLE CARD - VOLCANIC VERSION */
   .volcanic-card {
     @apply bg-dark-card border border-white/5 rounded-2xl p-8 transition-all duration-500;
+    position: relative;
+    z-index: 1;
   }
+  
   .volcanic-card:hover {
     @apply border-brand-red/40 shadow-lg shadow-brand-red/20;
+    transform: translateY(-5px);
   }
   
   /* THE HIGH-IMPACT BUTTON */
   .volcanic-btn {
     @apply bg-brand-red text-white font-black py-4 px-10 rounded-xl transition-all uppercase tracking-tighter shadow-lg shadow-brand-red/20;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
   }
+  
   .volcanic-btn:hover {
     @apply bg-brand-orange;
+    box-shadow: 0 0 20px theme('colors.brand-red');
   }
 
-  /* THE GRADIENT HEADING ACCENT */
+  /* THE GRADIENT HEADING ACCENT - REINFORCED */
   .heading-accent {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-brand-orange;
+    /* 1. Force the gradient to be a background */
+    background-image: linear-gradient(to right, theme('colors.brand-red'), theme('colors.brand-orange'));
+    
+    /* 2. Critical clipping properties */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 3. Make the actual text fill disappear so the background shows through */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    
+    /* 4. Ensure it has a layout block to render on */
+    display: inline-block;
+    
+    /* 5. Force it to the front */
+    position: relative;
+    z-index: 10;
   }
 }
 
@@ -31,4 +56,5 @@ body {
   @apply bg-black text-white antialiased;
   margin: 0;
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* Prevents unwanted scrolls from spider lines */
 }
